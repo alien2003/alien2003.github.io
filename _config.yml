@@ -1,0 +1,52 @@
+title: "Fellow DevOps Blog"
+tagline: "Notes from the digital world"
+description: "A senior DevOps engineer's notes on Kubernetes, infrastructure-as-code, observability, incident response, and the tooling that holds production together."
+
+author:
+  name: "alien2003"
+  github: alien2003
+  linkedin: ekolibabchukdevops
+
+url: "https://alien2003.github.io"
+baseurl: ""
+
+permalink: /:year/:month/:slug/
+timezone: UTC
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+excerpt_separator: <!--more-->
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - node_modules/
+  - .jekyll-cache/
+  - .sass-cache/
+  - README.md
+  - CLAUDE.md
+  - .claude/

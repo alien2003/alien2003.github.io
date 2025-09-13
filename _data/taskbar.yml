@@ -1,0 +1,12 @@
+- label: "C:\\posts"
+  url: /
+  icon: computer
+- label: "about.txt"
+  url: /about/
+  icon: document
+- label: "archive"
+  url: /archive/
+  icon: folder
+- label: "feed.xml"
+  url: /feed.xml
+  icon: network

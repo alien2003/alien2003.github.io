@@ -1,0 +1,40 @@
+<header class="desktop-header" role="banner">
+  <div class="window">
+    <div class="title-bar">
+      <div class="title-bar-text">
+        {{ site.title | escape }}: {{ site.tagline | escape }}
+      </div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize" tabindex="-1"></button>
+        <button aria-label="Maximize" tabindex="-1"></button>
+        <button aria-label="Close" tabindex="-1"></button>
+      </div>
+    </div>
+    <div class="window-body desktop-header-body">
+      <nav class="desktop-nav" aria-label="Primary">
+        <a href="{{ '/' | relative_url }}">
+          <span class="nav-icon icon-home" aria-hidden="true"></span>Home
+        </a>
+        <a href="{{ '/about/' | relative_url }}">
+          <span class="nav-icon icon-info" aria-hidden="true"></span>About
+        </a>
+        <a href="{{ '/archive/' | relative_url }}">
+          <span class="nav-icon icon-folder" aria-hidden="true"></span>Archive
+        </a>
+        <a href="{{ '/feed.xml' | relative_url }}">
+          <span class="nav-icon icon-network" aria-hidden="true"></span>RSS
+        </a>
+        {% if site.author.github %}
+        <a href="https://github.com/{{ site.author.github }}" rel="me noopener">
+          <span class="nav-icon icon-code" aria-hidden="true"></span>GitHub
+        </a>
+        {% endif %}
+        {% if site.author.linkedin %}
+        <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" rel="me noopener">
+          <span class="nav-icon icon-linkedin" aria-hidden="true"></span>LinkedIn
+        </a>
+        {% endif %}
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,195 @@
+// Win95 taskbar pinned to the bottom
+
+$tb-bg: #c0c0c0;
+
+.taskbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 30px;
+  background: $tb-bg;
+  // Authentic Win95 taskbar bevel: highlight on top, shadow on bottom.
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 2px 0 #dfdfdf,
+    inset 0 -1px 0 grey,
+    inset 0 -2px 0 #0a0a0a;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  font-family: "Pixelated MS Sans Serif", "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 11px;
+  z-index: 100;
+}
+
+.start-button {
+  // 98.css already styles <button>, but the Start button needs a fixed look.
+  min-width: 68px !important;
+  min-height: 24px !important;
+  padding: 0 8px !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+  font-size: 12px !important;
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+.start-button .start-flag {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/img/icons/start.ico") center/16px 16px no-repeat;
+  flex: 0 0 auto;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.taskbar-windows {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 3px;
+  overflow: hidden;
+  margin: 0 4px;
+}
+
+.taskbar-window {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 24px;
+  padding: 0 10px 0 8px;
+  background: $tb-bg;
+  color: #000 !important;
+  text-decoration: none !important;
+  // Raised button bevel (matches 98.css <button>)
+  box-shadow:
+    inset -1px -1px #0a0a0a,
+    inset 1px 1px #fff,
+    inset -2px -2px grey,
+    inset 2px 2px #dfdfdf;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.taskbar-window:hover { filter: brightness(1.03); }
+
+.taskbar-window.is-active {
+  // Pressed/sunken bevel = "this window is focused"
+  box-shadow:
+    inset -1px -1px #fff,
+    inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf,
+    inset 2px 2px grey;
+  background-image:
+    repeating-conic-gradient(#bdbdbd 0 25%, #c8c8c8 25% 50%);
+  background-size: 4px 4px;
+}
+
+.taskbar-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex: 0 0 auto;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.icon-computer { background-image: url("/assets/img/icons/computer.ico"); }
+.icon-folder   { background-image: url("/assets/img/icons/folder.ico"); }
+.icon-document { background-image: url("/assets/img/icons/document.ico"); }
+.icon-network  { background-image: url("/assets/img/icons/network.ico"); }
+.icon-code     { background-image: url("/assets/img/icons/code.ico"); }
+.icon-linkedin { background-image: url("/assets/img/icons/linkedin.ico"); }
+
+.taskbar-tray.status-bar {
+  margin: 0 2px;
+  flex: 0 0 auto;
+  height: 24px;
+  align-items: stretch;
+}
+
+.taskbar-tray .status-bar-field {
+  font-variant-numeric: tabular-nums;
+  min-width: 0;
+  text-align: center;
+  font-size: 12px;
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Start menu (toggled via clock.js)
+.start-menu {
+  position: fixed;
+  bottom: 30px;
+  left: 4px;
+  width: 220px;
+  background: $tb-bg;
+  margin: 0;
+  padding: 2px;
+  list-style: none;
+  z-index: 110;
+  // Same raised bevel as window chrome
+  box-shadow:
+    inset -1px -1px #0a0a0a,
+    inset 1px 1px #fff,
+    inset -2px -2px grey,
+    inset 2px 2px #dfdfdf;
+  font-size: 12px;
+}
+
+.start-menu[hidden] { display: none; }
+
+.start-menu li { margin: 0; padding: 0; }
+.start-menu li.start-menu-sep {
+  height: 0;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #fff;
+  margin: 3px 2px;
+}
+
+.start-menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  color: #000;
+  text-decoration: none;
+}
+
+.start-menu a:hover,
+.start-menu a:focus {
+  background: #000080;
+  color: #fff;
+  outline: none;
+}
+
+.start-menu .sm-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex: 0 0 auto;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+@media (max-width: 720px) {
+  .taskbar { height: 54px; flex-wrap: wrap; }
+  .taskbar-windows { order: 3; flex-basis: 100%; height: 24px; }
+  .start-menu { bottom: 54px; }
+}

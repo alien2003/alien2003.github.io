@@ -1,0 +1,25 @@
+---
+layout: default
+title: 404 Program Error
+permalink: /404.html
+---
+<div class="window error-dialog" role="alertdialog" aria-labelledby="err-title">
+  <div class="title-bar">
+    <div class="title-bar-text" id="err-title">Program Error</div>
+    <div class="title-bar-controls">
+      <button aria-label="Close" onclick="history.length>1?history.back():location.href='{{ '/' | relative_url }}'"></button>
+    </div>
+  </div>
+  <div class="window-body" style="display:flex;gap:14px;align-items:flex-start;padding:20px;">
+    <div aria-hidden="true" style="font-size:42px;line-height:1;">⚠️</div>
+    <div style="flex:1;">
+      <p style="margin:0 0 8px 0;"><strong>404.exe</strong> has performed an illegal operation and will be shut down.</p>
+      <p style="margin:0 0 4px 0;">If the problem persists, contact the system administrator.</p>
+      <p style="margin:0;color:#555;font-size:11px;">Error code: <code>NO_SUCH_PAGE</code> at <code>{{ page.url }}</code></p>
+    </div>
+  </div>
+  <div class="window-body" style="display:flex;gap:8px;justify-content:flex-end;margin-top:0;padding-top:0;">
+    <a href="{{ '/' | relative_url }}"><button type="button">OK</button></a>
+    <a href="{{ '/archive/' | relative_url }}"><button type="button">Details &gt;&gt;</button></a>
+  </div>
+</div>

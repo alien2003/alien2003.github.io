@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<section class="post-list">
+  {% for post in site.posts %}
+    {% include post-summary.html post=post %}
+  {% endfor %}
+  {% if site.posts == empty %}
+    <div class="window">
+      <div class="title-bar"><div class="title-bar-text">Information</div></div>
+      <div class="window-body"><p>No posts yet. Drop a markdown file in <code>_posts/</code>.</p></div>
+    </div>
+  {% endif %}
+</section>

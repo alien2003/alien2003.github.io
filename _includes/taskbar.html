@@ -1,0 +1,32 @@
+<footer class="taskbar" role="contentinfo">
+  <button class="start-button" type="button" aria-haspopup="true" aria-expanded="false" id="start-button">
+    <span class="start-flag" aria-hidden="true"></span>
+    <strong>Start</strong>
+  </button>
+  <div class="taskbar-windows" aria-label="Open windows">
+    {% for item in site.data.taskbar %}
+      {% assign current = false %}
+      {% if page.url == item.url %}{% assign current = true %}{% endif %}
+      <a class="taskbar-window {% if current %}is-active{% endif %}" href="{{ item.url | relative_url }}">
+        <span class="taskbar-icon icon-{{ item.icon | default: 'computer' }}" aria-hidden="true"></span>
+        <span class="taskbar-label">{{ item.label }}</span>
+      </a>
+    {% endfor %}
+  </div>
+  <div class="taskbar-tray status-bar" role="status">
+    <p class="status-bar-field" id="taskbar-clock" aria-label="Clock">--:-- --</p>
+  </div>
+  <ul class="start-menu" id="start-menu" hidden>
+    <li><a href="{{ '/' | relative_url }}"><span class="sm-icon icon-computer" aria-hidden="true"></span>Home</a></li>
+    <li><a href="{{ '/archive/' | relative_url }}"><span class="sm-icon icon-folder" aria-hidden="true"></span>Archive</a></li>
+    <li><a href="{{ '/about/' | relative_url }}"><span class="sm-icon icon-document" aria-hidden="true"></span>About</a></li>
+    <li><a href="{{ '/feed.xml' | relative_url }}"><span class="sm-icon icon-network" aria-hidden="true"></span>Subscribe (RSS)</a></li>
+    {% if site.author.github or site.author.linkedin %}<li class="start-menu-sep"></li>{% endif %}
+    {% if site.author.github %}
+    <li><a href="https://github.com/{{ site.author.github }}" rel="me noopener"><span class="sm-icon icon-code" aria-hidden="true"></span>GitHub</a></li>
+    {% endif %}
+    {% if site.author.linkedin %}
+    <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" rel="me noopener"><span class="sm-icon icon-linkedin" aria-hidden="true"></span>LinkedIn</a></li>
+    {% endif %}
+  </ul>
+</footer>

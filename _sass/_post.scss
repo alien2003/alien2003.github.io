@@ -1,0 +1,217 @@
+// Long-form readable typography inside .window-body.prose
+
+.prose {
+  font-family: "Tahoma", "Verdana", "MS Sans Serif", "Pixelated MS Sans Serif", sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #1a1a1a;
+  // No explicit background — inherit silver from the parent .window.
+  padding: 14px 18px;
+  -webkit-font-smoothing: auto;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: "Tahoma", "Verdana", sans-serif;
+  font-weight: 700;
+  color: #000;
+  margin: 1.4em 0 0.45em;
+  line-height: 1.2;
+}
+
+.prose h1 { font-size: 1.75rem; border-bottom: 2px solid #808080; padding-bottom: 4px; }
+.prose h2 { font-size: 1.35rem; }
+.prose h3 { font-size: 1.15rem; }
+.prose h4 { font-size: 1.0rem; }
+
+.prose p { margin: 0.7em 0; }
+
+// Authentic Win95/IE link styling — blue underlined, purple when visited,
+// no hover background, dotted focus outline.
+.prose a {
+  color: #0000ee;
+  text-decoration: underline;
+}
+.prose a:visited { color: #551a8b; }
+.prose a:hover, .prose a:active { color: #ee0000; }
+.prose a:focus { outline: 1px dotted #000; }
+
+.prose ul, .prose ol { padding-left: 28px; margin: 0.6em 0; }
+.prose li { margin: 0.2em 0; }
+
+.prose blockquote {
+  margin: 1em 0;
+  padding: 8px 14px;
+  background: #ffffe1; // Win95 tooltip yellow
+  border: 1px solid #808080;
+  border-left: 4px solid #000080;
+  color: #1a1a1a;
+}
+.prose blockquote p:first-child { margin-top: 0; }
+.prose blockquote p:last-child  { margin-bottom: 0; }
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #ffffff;
+  margin: 1.6em 0;
+}
+
+// Inline code
+.prose :not(pre) > code {
+  font-family: "Consolas", "Lucida Console", "Courier New", monospace;
+  background: #fff;
+  padding: 1px 4px;
+  border: 1px solid #b0b0b0;
+  font-size: 0.92em;
+}
+
+// Code blocks (Rouge wraps in <div class="highlight"><pre>…</pre></div>)
+.prose .highlight,
+.prose pre {
+  margin: 1em 0;
+  font-size: 13px;
+}
+
+.prose .highlight pre,
+.prose pre {
+  // 98.css already styles <pre> with sunken inset borders + white bg.
+  font-family: "Consolas", "Lucida Console", "Courier New", monospace;
+  line-height: 1.4;
+  padding: 12px 14px;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+// Tables
+.prose table {
+  margin: 1em 0;
+  border-collapse: collapse;
+  background: #fff;
+  // 98.css default <table> styling is barebones; add visible cell borders.
+}
+.prose table th,
+.prose table td {
+  border: 1px solid #808080;
+  padding: 4px 8px;
+  text-align: left;
+}
+.prose table thead th {
+  // 98.css already gives thead the raised silver look; reinforce.
+  background: #c0c0c0;
+}
+
+// Keys
+.prose kbd {
+  display: inline-block;
+  font-family: "Consolas", monospace;
+  font-size: 0.9em;
+  background: #c0c0c0;
+  color: #000;
+  padding: 1px 6px;
+  box-shadow:
+    inset -1px -1px #0a0a0a,
+    inset 1px 1px #fff,
+    inset -2px -2px grey,
+    inset 2px 2px #dfdfdf;
+  min-width: 14px;
+  text-align: center;
+}
+
+// Images sit nicely inside the window-body
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #808080;
+  padding: 2px;
+  background: #fff;
+}
+
+// Post header
+.post-header h1 { margin-top: 0; }
+.post-meta {
+  color: #555;
+  font-size: 12px;
+  margin: 0 0 1em 0;
+}
+.post-tags .tag {
+  display: inline-block;
+  background: #ffffe1;
+  border: 1px solid #808080;
+  padding: 0 5px;
+  margin-right: 3px;
+  font-size: 11px;
+}
+
+.post-summary .window-body { padding: 12px 16px; }
+.post-summary .window-body p { font-family: Tahoma, Verdana, sans-serif; font-size: 13px; line-height: 1.5; color: #1a1a1a; margin: 0.4em 0; -webkit-font-smoothing: auto; }
+
+// Bevelled action buttons. Shared between the "Read more →" button on
+// home-page summaries and the "back to desktop" button at the bottom of
+// a single post.
+.post-summary-more,
+.post-back { margin-top: 0.8em !important; text-align: right; }
+
+.post-summary-more a,
+.post-back a {
+  display: inline-block;
+  background: silver;
+  color: #000;
+  text-decoration: none;
+  font-family: "Pixelated MS Sans Serif", "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 11px;
+  min-width: 90px;
+  min-height: 23px;
+  padding: 4px 12px;
+  text-align: center;
+  box-sizing: border-box;
+  // Same raised bevel that 98.css gives <button>
+  box-shadow:
+    inset -1px -1px #0a0a0a,
+    inset 1px 1px #fff,
+    inset -2px -2px grey,
+    inset 2px 2px #dfdfdf;
+}
+// Buttons must stay black-on-silver across every link state. The
+// surrounding .prose colours unvisited links blue, visited purple,
+// and active red, which leaks onto button-styled anchors via
+// pseudo-class specificity unless we override every state.
+.post-summary-more a:link,
+.post-summary-more a:visited,
+.post-summary-more a:hover,
+.post-summary-more a:active,
+.post-back a:link,
+.post-back a:visited,
+.post-back a:hover,
+.post-back a:active { background: silver; color: #000; }
+
+.post-summary-more a:active,
+.post-back a:active {
+  // Sunken (pressed) bevel
+  box-shadow:
+    inset -1px -1px #fff,
+    inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf,
+    inset 2px 2px grey;
+}
+.post-summary-more a:focus,
+.post-back a:focus { outline: 1px dotted #000; outline-offset: -4px; }
+
+.post-footer-nav { font-size: 13px; }
+
+// Pixel icons inside status-bar fields
+.sb-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: -3px;
+  margin-right: 5px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+.sb-icon.icon-calendar { background-image: url("/assets/img/icons/calendar.ico"); }
+.sb-icon.icon-clock    { background-image: url("/assets/img/icons/clock.ico"); }
+.sb-icon.icon-wordpad  { background-image: url("/assets/img/icons/wordpad.ico"); }

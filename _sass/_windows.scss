@@ -1,0 +1,48 @@
+// Tweaks layered on top of 98.css default .window styling.
+
+.window {
+  background: #c0c0c0;
+}
+
+.window .title-bar-text {
+  // The 98.css default sets a 24px right margin; keep it but ensure long
+  // titles truncate cleanly rather than wrapping the title bar to two lines.
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.window .title-bar-text a {
+  color: #fff;
+  text-decoration: none;
+}
+.window .title-bar-text a:hover,
+.window .title-bar-text a:focus { text-decoration: none; outline: none; }
+
+// Title-bar controls are decorative on most chrome windows; pointer hint
+// only when the close button has an actual onclick handler (post.html).
+.window .title-bar-controls button[onclick] { cursor: pointer; }
+.window .title-bar-controls button:not([onclick]) { cursor: default; }
+
+// Stretch status-bar fields a bit for readability
+.window .status-bar { gap: 2px; }
+.window .status-bar .status-bar-field { padding: 3px 6px; }
+
+// Window-body content area: give it a bit more breathing room than 98.css default
+.window .window-body { margin: 10px; }
+
+// Page/post layouts: subtle drop shadow to lift them off the desktop
+.post-summary,
+.window.page,
+.window.post {
+  // 98.css uses inset borders, so a tiny offset shadow looks period-appropriate
+  // without breaking the bevel.
+  box-shadow:
+    inset -1px -1px #0a0a0a,
+    inset 1px 1px #dfdfdf,
+    inset -2px -2px grey,
+    inset 2px 2px #fff,
+    2px 2px 0 rgba(0,0,0,0.25);
+}

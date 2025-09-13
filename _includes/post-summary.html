@@ -1,0 +1,23 @@
+{% assign p = include.post %}
+<article class="window post-summary">
+  <div class="title-bar">
+    <div class="title-bar-text">
+      <a href="{{ p.url | relative_url }}">{{ p.title | escape }}</a>
+    </div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize" tabindex="-1"></button>
+      <button aria-label="Maximize" tabindex="-1"></button>
+      <button aria-label="Close" tabindex="-1"></button>
+    </div>
+  </div>
+  <div class="window-body">
+    {{ p.excerpt }}
+    <p class="post-summary-more"><a href="{{ p.url | relative_url }}">Read more →</a></p>
+  </div>
+  <div class="status-bar">
+    <p class="status-bar-field"><span class="sb-icon icon-calendar" aria-hidden="true"></span>{{ p.date | date: "%Y-%m-%d" }}</p>
+    {% assign words = p.content | number_of_words %}
+    <p class="status-bar-field"><span class="sb-icon icon-clock" aria-hidden="true"></span>{{ words | divided_by: 220 | plus: 1 }} min</p>
+    <p class="status-bar-field"><span class="sb-icon icon-wordpad" aria-hidden="true"></span>{{ words }} words</p>
+  </div>
+</article>

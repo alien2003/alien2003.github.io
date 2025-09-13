@@ -1,0 +1,32 @@
+// Rouge token classes — Win95-friendly palette on light background.
+// Only common token classes; uncommon ones inherit default body color.
+
+.highlight {
+  // The wrapping <div>; pre is what 98.css styles. Don't override pre bg.
+}
+
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs { color: #008000; font-style: italic; }     // comments
+.highlight .cp, .highlight .cpf { color: #808080; }                                                       // preprocessor
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp,
+.highlight .kr, .highlight .kt { color: #000080; font-weight: bold; }                                     // keywords
+.highlight .o, .highlight .ow { color: #1a1a1a; }                                                          // operators
+.highlight .nb { color: #000080; }                                                                         // builtin
+.highlight .nf, .highlight .nc, .highlight .nn { color: #800080; }                                        // functions, classes, namespaces
+.highlight .na, .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi { color: #aa6000; }       // attrs / vars
+.highlight .nt { color: #000080; }                                                                         // tags (HTML/XML)
+
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sc,
+.highlight .sd, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx,
+.highlight .sr, .highlight .ss { color: #006600; }                                                        // strings (slightly darker green for contrast)
+
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi,
+.highlight .mo, .highlight .il { color: #aa0000; }                                                        // numbers
+
+.highlight .err { color: #ffffff; background: #aa0000; padding: 0 2px; }                                  // syntax errors
+.highlight .gh, .highlight .gu { color: #000080; font-weight: bold; }                                     // diff headers
+.highlight .gd { color: #aa0000; background: #ffe0e0; }                                                    // diff removed
+.highlight .gi { color: #006600; background: #e0ffe0; }                                                    // diff added
+.highlight .gp { color: #808080; }                                                                         // generic prompt
+
+// Line numbers (if used)
+.highlight .lineno, .highlight .ln { color: #808080; padding-right: 8px; user-select: none; }

@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<article class="window post">
+  <div class="title-bar">
+    <div class="title-bar-text">{{ page.title | escape }}</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize" tabindex="-1"></button>
+      <button aria-label="Maximize" tabindex="-1"></button>
+      <button aria-label="Close" tabindex="-1" onclick="history.length>1?history.back():location.href='{{ '/' | relative_url }}'"></button>
+    </div>
+  </div>
+  <div class="window-body prose">
+    <header class="post-header">
+      <h1>{{ page.title | escape }}</h1>
+      <p class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+        {% if page.tags and page.tags != empty %}
+          · <span class="post-tags">
+            {% for t in page.tags %}<span class="tag">{{ t }}</span>{% unless forloop.last %} {% endunless %}{% endfor %}
+          </span>
+        {% endif %}
+      </p>
+    </header>
+    {{ content }}
+    <hr>
+    <p class="post-footer-nav">
+      {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | escape }}</a>{% endif %}
+      {% if page.previous and page.next %} &nbsp;|&nbsp; {% endif %}
+      {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} →</a>{% endif %}
+    </p>
+    <p class="post-back"><a href="{{ '/' | relative_url }}">back to desktop</a></p>
+  </div>
+  <div class="status-bar">
+    <p class="status-bar-field"><span class="sb-icon icon-calendar" aria-hidden="true"></span>{{ page.date | date: "%Y-%m-%d" }}</p>
+    {% assign w = page.content | number_of_words %}
+    <p class="status-bar-field"><span class="sb-icon icon-clock" aria-hidden="true"></span>{{ w | divided_by: 220 | plus: 1 }} min</p>
+    <p class="status-bar-field"><span class="sb-icon icon-wordpad" aria-hidden="true"></span>{{ w }} words</p>
+  </div>
+</article>
